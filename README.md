@@ -25,3 +25,5 @@ Script is designed to be either run on demand when you know new builds are avail
 
 ## Stretch Goals
 I'd like to add a feature for beta support in the future, to keep the latest beta builds of each OS. Let me know if you're using this script and would like to see that added.
+
+I can imagine that some folks may want only DMGs or only IPSW files and not both. I can easily add these options to the User Configuration section.
