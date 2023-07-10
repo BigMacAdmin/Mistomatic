@@ -21,5 +21,7 @@ The `$mistStore` variable in the User Configuration section must point to a dire
 
 `mist-cli` must be run as root, and thus `Mistomatic.sh` must also be run as root.
 
+Script is designed to be either run on demand when you know new builds are available, or initiated via a LaunchDaemon daily/weekly to keep a repository up to date.
+
 ## Stretch Goals
 I'd like to add a feature for beta support in the future, to keep the latest beta builds of each OS. Let me know if you're using this script and would like to see that added.
