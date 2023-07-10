@@ -14,7 +14,7 @@ This zsh script is designed to be run on a regular interval and will automatical
 ## How it Works
 Mistomatic will use `mist-cli` to generate a plist containing the information for all available DMGs and IPSWs. It will then parse that plist to determine what the latest version of each major macOS release is for each type (installer and IPSW).
 
-Mistomatic will automatically delete outdated installers, and download the latest available versions. If there are two build numbers for the latest version of macOS, then both build numbers will be downloaded and maintained. For example: In June 2023 macOS 13.4.1 was the latest version of macOS, but this version has two build numbers in order to support hardware announced at WWDC2023 (`22F82` and `22F2083`. While this is the case, Mistomatic will keep both IPSWs and DMGs of both builds.
+Mistomatic will automatically delete outdated installers, and download the latest available versions. If there are two build numbers for the latest version of macOS, then both build numbers will be downloaded and maintained. For example: In June 2023 macOS 13.4.1 was the latest version of macOS, but this version has two build numbers in order to support hardware announced at WWDC2023 (`22F82` and `22F2083`. If there are two build numbers for the latest version of a macOS major release then Mistomatic will IPSWs and DMGs of both builds.
 
 ## Additional Details
 The `$mistStore` variable in the User Configuration section must point to a directory which already exists. Subfolders for `DMGs` and `IPSWs` will be automatically created. Folders/files created by Mistomatic will grant read writes to all users of the system to avoid issues with root ownership.
