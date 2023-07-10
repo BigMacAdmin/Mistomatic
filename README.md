@@ -23,6 +23,8 @@ The `$mistStore` variable in the User Configuration section must point to a dire
 
 Script is designed to be either run on demand when you know new builds are available, or initiated via a LaunchDaemon daily/weekly to keep a repository up to date.
 
+An older version of this script has been in my `macOS-Stuff` repository for a while, but it was not as fully featured or efficient as I would like and broke when Apple released multiple builds of the same version of macOS.
+
 ## Stretch Goals
 I'd like to add a feature for beta support in the future, to keep the latest beta builds of each OS. Let me know if you're using this script and would like to see that added.
 
