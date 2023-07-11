@@ -163,16 +163,16 @@ function determine_latest_version(){
     count=0
 
     # While loop until PlistBuddy exits with an error trying to read the index of the array
-    while currentVersionCheck=$("$pBuddy" -c "Print $count:version" "${2}_$plistFile") > /dev/null 2>&1; do
+    while currentVersionCheck=$("$pBuddy" -c "Print $count:version" "/var/tmp/${2}_$plistFile") > /dev/null 2>&1; do
         # Get the major version of the dictionary we're looking at
         currentMajorVersionCheck=$(echo "$currentVersionCheck" | cut -d '.' -f 1)
         # If the current item we're looking at is of the expected major version, then
         if [ $currentMajorVersionCheck = ${1} ]; then
             # Add the build number to the array of what we want to download
             if [ ${2} = "firmware" ]; then
-                "$pBuddy" -c "Add :FirmwaresToDownload: string $($pBuddy -c "Print $count:build" ${2}_$plistFile)" "$tmpPlist"
+                "$pBuddy" -c "Add :FirmwaresToDownload: string $($pBuddy -c "Print $count:build" /var/tmp/${2}_$plistFile)" "$tmpPlist"
             elif [ ${2} = "installer" ]; then
-                "$pBuddy" -c "Add :InstallersToDownload: string $($pBuddy -c "Print $count:build" ${2}_$plistFile)" "$tmpPlist"
+                "$pBuddy" -c "Add :InstallersToDownload: string $($pBuddy -c "Print $count:build" /var/tmp/${2}_$plistFile)" "$tmpPlist"
             fi
 
             # Now check if there is more than one item with the same version number. 
@@ -182,14 +182,14 @@ function determine_latest_version(){
             testCount=$(( count + 1 ))
 
             # If the next entry in the index is valid, then
-            if testVersion=$("$pBuddy" -c "Print $testCount:version" "${2}_$plistFile" ) > /dev/null 2>&1; then
+            if testVersion=$("$pBuddy" -c "Print $testCount:version" "/var/tmp/${2}_$plistFile" ) > /dev/null 2>&1; then
                 # If this entry has the same value as the preceding version"
                 if [ "$currentVersionCheck" = $testVersion ]; then
                     # Add the build do the array of builds we want to download
                     if [ ${2} = "firmware" ]; then
-                        "$pBuddy" -c "Add :FirmwaresToDownload: string $($pBuddy -c "Print $testCount:build" ${2}_$plistFile)" "$tmpPlist"
+                        "$pBuddy" -c "Add :FirmwaresToDownload: string $($pBuddy -c "Print $testCount:build" /var/tmp/${2}_$plistFile)" "$tmpPlist"
                     elif [ ${2} = "installer" ]; then
-                        "$pBuddy" -c "Add :InstallersToDownload: string $($pBuddy -c "Print $testCount:build" ${2}_$plistFile)" "$tmpPlist"
+                        "$pBuddy" -c "Add :InstallersToDownload: string $($pBuddy -c "Print $testCount:build" /var/tmp/${2}_$plistFile)" "$tmpPlist"
                     fi
                 fi
             break
